@@ -24,17 +24,21 @@ public class SoundSender {
     private final Encoder mEncoder;
 
     public SoundSender() {
-        mEncoder = new Encoder();
+        this(true);
+    }
+
+    public SoundSender(boolean eccEnabled) {
+        mEncoder = new Encoder(eccEnabled);
     }
 
     public void sendByteData(byte[] data) {
-        sendData(data);
+        sendDataImpl(data);
     }
 
     public void sendString(String s) {
         try {
             byte[] dataToSend = createBytes(s);
-            sendData(dataToSend);
+            sendByteData(dataToSend);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -46,7 +50,7 @@ public class SoundSender {
         return d.getBytes("UTF-8");
     }
 
-    public void sendData(byte[] data) {
+    private void sendDataImpl(byte[] data) {
 //        Log.d(TAG, String.format("Data: %s", Arrays.toString(data)));
 //        print("Decimalize: %s" % [int(d) for d in data])
 //        print("Binarize: %s" %  [format(int(d), 'b') for d in data])

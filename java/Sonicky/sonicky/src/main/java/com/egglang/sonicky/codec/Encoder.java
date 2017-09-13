@@ -48,18 +48,15 @@ public class Encoder {
             mAudioTrack.play();
             mAudioTrack.write(mArrayToSend, 0, mArrayToSend.length);
             mAudioTrack.stop();
-
         }
     }
 
-    ;
-
-    public Encoder() {
-        init_();
+    public Encoder(boolean eccEnabled) {
+        init_(eccEnabled);
     }
 
-    private void init_() {
-        mEccEncoder = EccInstanceProvider.getEncoder(true);
+    private void init_(boolean eccEnabled) {
+        mEccEncoder = EccInstanceProvider.getEncoder(eccEnabled);
         int minBufferSizeInBytes = AudioTrack.getMinBufferSize(
                 RATE,
                 AudioFormat.CHANNEL_OUT_MONO,

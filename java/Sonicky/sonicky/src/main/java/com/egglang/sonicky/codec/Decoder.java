@@ -67,17 +67,20 @@ public class Decoder {
     private double[] mAudio;
     private boolean mFinished;
     private AudioRecord mAudioRec = null;
-    private final EccDecoder mEccDecoder;
+    private EccDecoder mEccDecoder;
 
-    public Decoder() {
+    public Decoder(boolean eccEnabled) {
+        init_(eccEnabled);
+    }
+
+    private void init_(boolean eccEnabled) {
         mWinLen = (int) (BIT_DURATION * RATE / CHUNK_SIZE);
         mWinFudge = mWinLen / 2;
         mBuffer = new ArrayDeque<>();
         mBytes = new ArrayDeque<>();
         mBufLen = mWinLen + mWinFudge;
         mIdleCount = 0;
-//        mEccDecoder = EccInstanceProvider.getDecoder(BuildConfig.ECC_ENABLED);
-        mEccDecoder = EccInstanceProvider.getDecoder(true);
+        mEccDecoder = EccInstanceProvider.getDecoder(eccEnabled);
 
         Log.d(getClass().getName(), String.format("AUDIOBUF_SIZE: %d", AUDIOBUF_SIZE));
         Log.d(getClass().getName(), String.format("CHUNK_SIZE: %d", CHUNK_SIZE));
@@ -85,9 +88,14 @@ public class Decoder {
         Log.d(getClass().getName(), String.format("mWinFudge: %d", mWinFudge));
         Log.d(getClass().getName(), String.format("mBufLen: %d", mBufLen));
 
+        setupAudioRecord();
+    }
+
+    private void setupAudioRecord() {
         mAudio = new double[CHUNK_SIZE];
 
         mFinished = false;
+
         mAudioRec = new AudioRecord(
                 MediaRecorder.AudioSource.MIC,
                 RATE, AudioFormat.CHANNEL_IN_MONO,

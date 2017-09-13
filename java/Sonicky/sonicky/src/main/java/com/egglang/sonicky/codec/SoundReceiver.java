@@ -26,7 +26,11 @@ public class SoundReceiver {
     private Decoder mDecoder;
 
     public SoundReceiver() {
-        mDecoder = new Decoder();
+        this(true);
+    }
+
+    public SoundReceiver(boolean eccEnabled) {
+        mDecoder = new Decoder(eccEnabled);
     }
 
     public byte[] receive() {
@@ -38,7 +42,7 @@ public class SoundReceiver {
     }
 
     public String receiveAsString() {
-        byte[] bytes = mDecoder.listen();
+        byte[] bytes = receive();
         if (bytes != null && bytes.length > 0) {
             try {
                 return parseReceiveData(bytes);
