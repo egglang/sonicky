@@ -33,12 +33,39 @@ $ python receiver_example.py
 This will start a receiver and listen.
 
 
+### Minimal source code to receive
+
+The minimal source code to start a receiver is as follows.
+
+```
+from sonicky.codec.ecc import OnebyteReedSolomonEcc
+from sonicky.communication import SoundReceiver
+
+receiver = SoundReceiver(debug=True, coder=OnebyteReedSolomonEcc())
+while True:
+    data = receiver.receive()
+    if len(data) > 0:
+        data_string = receiver.convert_data_to_ascii_string(data)
+```
+
 ### Send text
 
 In order to send some text, do:
 
 ```
 $ python sender_example.py
+```
+
+### Minimal source code to send
+
+The minimal source code to send some `Hello` is as follows.
+
+```
+from sonicky.codec.ecc import OnebyteReedSolomonEcc
+from sonicky.communication import SoundSender
+
+sender = SoundSender(debug=True, coder=OnebyteReedSolomonEcc())
+sender.send_string("Hello")
 ```
 
 ### Example for Android 
