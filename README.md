@@ -53,6 +53,7 @@ Android encoder/decoder and an example application using it is provided.
 
  * Harvest Zhang and Bonnie Eisenman - Authors of [SqueakyChat][1], I've inspired by their contribution and trying to improve their idea.
  * Masayuki Miyazaki - Author of [Reedsolomon Java library][2].
+ * Alumni in the same lab together in AIIT - Part of this activity is based on what I learned at the university.
 
 ## License
 
