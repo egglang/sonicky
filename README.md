@@ -12,7 +12,7 @@ Python module:
 * reedsolo
 * PyAudio
 
-You will also need `pyautogui` in order to use slide operator example.
+You will also need [pyautogui][1] if you want to use a slide operator example.
 
 Android module:
 
@@ -78,14 +78,15 @@ Android encoder/decoder and an example application using it are also provided.
 
 ### Credits
 
- * Harvest Zhang and Bonnie Eisenman - Authors of [SqueakyChat][1], I've inspired by their contribution and trying to improve their idea.
- * Masayuki Miyazaki - Author of [Reedsolomon Java library][2].
+ * Harvest Zhang and Bonnie Eisenman - Authors of [SqueakyChat][2], I've inspired by their contribution and trying to improve their idea.
+ * Masayuki Miyazaki - Author of [Reedsolomon Java library][3].
  * Alumni in the same lab together in AIIT - Part of this activity is based on what I learned at the university.
 
 ## License
 
 `sonicky` is Apache 2.0 Licensed. 
 
-[1]: https://github.com/bonniee/ultrasonic/
-[2]: http://sourceforge.jp/projects/reedsolomon/
+[1]: https://github.com/asweigart/pyautogui
+[2]: https://github.com/bonniee/ultrasonic/
+[3]: http://sourceforge.jp/projects/reedsolomon/
 
