@@ -70,7 +70,7 @@ sender.send_string("Hello")
 
 ### Example for Android 
 
-Android encoder/decoder and an example application using it are also provided.
+Android encoder/decoder and an example application using it are also provided. However, while the library generally works fine, the example is not substantial yet. I am keenly preparing a better example to show various use cases.
 
 ## Developed By
 
